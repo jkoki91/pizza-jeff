@@ -12,8 +12,8 @@ export default {
 }
 </script>
 
-<style sco
-OrderCardped>
+<style scoped>
+
 .footer__container{
     width: 100%;
     height: auto;

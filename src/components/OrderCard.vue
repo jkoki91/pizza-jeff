@@ -24,7 +24,7 @@
       <div  v-if="visibleDetails">
       <div class="">
           <div class="dropdown">
-            <div class="d-flex flex-direction-row align-items-center">
+            <div class="d-flex flex-direction-row align-items-center justify-content-center">
                 <p class="mt-3">Status: </p>
                 <a @click="showStatus()" class="btn dropdown-toggle" id="status__dropdown">
                     {{ ordersInfo.status }}
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { Options, Vue } from "vue-class-component";
+import { Options, Vue } from "vue-class-component";   
 import UserInfo from "./UserInfo.vue";
 
 @Options({
@@ -118,9 +118,8 @@ export default class OrderCard extends Vue {}
 }
 .card__container{
     min-width: fit-content;
-    max-width: 28vw;
+    max-width: 30vw;
     box-shadow: 5px 5px 24px 1px rgba(0,0,0,0.87);
-    /* opacity: 0.9; */
 }
 
 #CANCELLED,#ABANDONED{
@@ -168,6 +167,12 @@ li {
     padding: 0.3rem;
     height: fit-content;
     margin-top: 0.5rem;
+}
+
+@media screen and (min-width: 0px) and (max-width: 768px){
+    .card__container{
+        min-width: 60vw;
+    }
 }
 
 </style>
