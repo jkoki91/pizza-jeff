@@ -7,8 +7,15 @@
 </template>
 
 <style lang="scss">
+
+@font-face {
+  font-family: eatday;
+  src: url('./assets/Eatday.ttf');
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: eatday;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

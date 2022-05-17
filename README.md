@@ -1,5 +1,14 @@
 # pizza-jeff-vue
 
+This is Jorge's challenge to create a web application for a pizzeria.
+
+## Project description
+
+
+
+
+
+
 ## Project setup
 ```
 npm install
