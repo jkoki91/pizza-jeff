@@ -1,29 +1,35 @@
 <template>
   <div class="home home__container">
-    <header-jeff></header-jeff>
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-      <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <users-orders></users-orders>
+    <header-jeff @search="searchOrder"></header-jeff>
+    <users-orders :searchedOrder="searchedOrder1" :key="searchedOrder1"></users-orders>
     <footer-jeff></footer-jeff>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 import UsersOrders from '@/components/UsersOrders.vue'
 import HeaderJeff from '../components/HeaderJeff.vue'
 import FooterJeff from '../components/FooterJeff.vue'
-// import image from '../assets/background_orange.jpg'
 
 
 @Options({
+  data() {
+    return {
+      searchedOrder1: '',
+    };
+  },
   components: {
-    HelloWorld,
     UsersOrders,
     HeaderJeff,
     FooterJeff
   },
+  methods:{
+    searchOrder(info:string){ //pendiente hacer filtro
+      console.log('Desde home',info)
+      // return this.searchedOrder1 = info
+    }
+  }
 })
 export default class HomeView extends Vue {}
 </script>
@@ -31,6 +37,5 @@ export default class HomeView extends Vue {}
 <style scoped>
   .home__container{
     background-image: url('../assets/background_orange.jpg');
-    /* background-color: brown; */
   }
 </style>
