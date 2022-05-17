@@ -29,7 +29,6 @@
   <form class="form-inline my-2 my-lg-0 mx-3" @submit="searchOrder">
       <input class="form-control mr-sm-2 ps-2" v-model="search" type="search" placeholder="Search an order" aria-label="Search">
       <button class="btn btn-outline-light my-2 my-sm-0" @click="$emit('search',this.search)" type="submit">Search</button>
-      <!-- <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button> -->
   </form>
   </nav>
   <div v-if="visible" class="navbar-collapse d-flex justify-content-start px-5 pb-3 pt-2 mb-4 bg-black" style="width: fit-content; border-bottom-right-radius: 5px;" id="navbarTogglerDemo03">
@@ -64,8 +63,6 @@ export default {
     },
     searchOrder(e){
       e.preventDefault()
-      // console.log(this.search)
-      // this.$emit('search',this.search)
     }
   },
   data() {

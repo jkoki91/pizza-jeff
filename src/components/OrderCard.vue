@@ -1,6 +1,5 @@
 <template>
   <div class="card card__container my-3" :id="ordersInfo.status" style="width: 18rem">
-    <!-- <img src="..." class="card-img-top" alt="..." /> -->
     <div class="card-body card__body">
       <h5 class="card-title card__title">
         Order number {{ ordersInfo.number }} for
@@ -14,9 +13,6 @@
         </li>
       </ul>
       <div class="d-flex flex-row justify-content-around mt-1">
-          <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button> -->
         <button v-if="!visibleDetails" @click="showDetails()" class="btn dropdown-toggle">Details</button>
         <button v-if="visibleDetails" @click="showDetails()" class="btn dropdown-toggle">Less details</button>
         <button class="btn btn-primary client__button" @click="showModal()">Client info</button>

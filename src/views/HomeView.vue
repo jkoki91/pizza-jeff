@@ -1,7 +1,11 @@
 <template>
   <div class="home home__container">
-    <header-jeff @search="searchOrder"></header-jeff>
-    <users-orders :searchedOrder="searchedOrder1" :key="searchedOrder1"></users-orders>
+    <!-- <header-jeff @search="searchOrder"></header-jeff>
+    <users-orders :searchedOrder="searchedOrder1" :key="searchedOrder1"></users-orders> -->
+    <!-- PENDIENTE HACER EL FILTRO-->
+    
+    <header-jeff></header-jeff>
+    <users-orders></users-orders>
     <footer-jeff></footer-jeff>
   </div>
 </template>
