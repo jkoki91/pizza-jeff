@@ -85,7 +85,6 @@ import UserInfo from "./UserInfo.vue";
       const data = {
           status: value
       }  
-    //   console.log(typeof(value))
       console.log(id)
       fetch(`http://localhost:1907/orders/${id}`,{
             method: 'POST',

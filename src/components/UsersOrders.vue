@@ -38,8 +38,12 @@
 
 <script>
 import OrderCard from "./OrderCard.vue";
+// import { createStore } from 'vuex'
+// import { Options, Vue } from "vue-class-component";   
+
 
 export default {
+// @Options({
   components: {
     OrderCard,
   },
@@ -48,6 +52,7 @@ export default {
       response: null,
       petition: this.getUsers(),
       orderedResponse: null,
+      // store: createStore({})
     };
   },
   watch: {},
@@ -113,7 +118,14 @@ export default {
       return { hola };
     },
   },
+// })
 };
+// export default class UsersOrders extends Vue {}
+
+// export const store = createStore({
+  
+// })
+
 </script>
 
 <style scoped>
