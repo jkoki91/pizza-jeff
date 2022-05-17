@@ -4,6 +4,7 @@
       <h1><span class="badge text-light ms-4">To do</span></h1>
       <ul id="example-1">
         <li v-for="item in response" :key="item.id">
+        <!-- <li v-for="item in filteredArray" :key="item.id"> -->
           <order-card v-if="item.status===('CONFIRMED')" :orders="item"></order-card>
         </li>
       </ul>
@@ -12,6 +13,7 @@
       <h1><span class="badge text-light ms-4">In progress</span></h1>
       <ul id="example-2">
         <li v-for="item in response" :key="item.id">
+        <!-- <li v-for="item in filteredArray" :key="item.id"> -->
         <!-- Estp se debería poder hacer sin repetir código, pero no me coge el operador OR -->
           <order-card v-if="item.status===('IN_PROCESS')" :orders="item"></order-card>
           <order-card v-if="item.status===('IN_DELIVERY')" :orders="item"></order-card>
@@ -23,6 +25,7 @@
       <h1><span class="badge text-light ms-4">Done</span></h1>      
       <ul id="example-3">
         <li v-for="item in response" :key="item.id"> 
+        <!-- <li v-for="item in filteredArray" :key="item.id">  -->
         <!-- Estp se debería poder hacer sin repetir código, pero no me coge el operador OR -->
           <order-card v-if="item.status===('ABANDONED')" :orders="item"></order-card>
           <order-card v-if="item.status===('CANCELLED')" :orders="item"></order-card>
@@ -37,20 +40,31 @@
 </template> 
 
 <script>
+import { Options, Vue } from "vue-class-component";   
 import OrderCard from "./OrderCard.vue";
 
-export default {
+
+// export default {
+@Options({
+
   components: {
     OrderCard,
+  },
+  props:{
+    searchedOrder: String,
   },
   data() {
     return {
       response: null,
       petition: this.getUsers(),
       orderedResponse: null,
-    };
+      // filteredArray: this.response,
+      // searchedOrderUser: this.filterResponse(),
+    }
   },
-  watch: {},
+  watch: {
+    
+  },
   methods: {
     async getUsers() {
       await fetch("http://localhost:1907/orders")
@@ -59,27 +73,34 @@ export default {
           console.log("objeto", d.content);
           this.response = d.content;
           this.convertDate;
-          // this.sortResponse
         });
     },
     sortResponse() {
-      // console.log(this.response.sort(function(a, b){return a.scheduledDateInSeconds - b.scheduledDateInSeconds}))
       const sorted = () =>
         this.response.sort(function (a, b) {
-          return a.scheduledDateInSeconds - b.scheduledDateInSeconds;
-        });
-      sorted();
-      return { sorted };
+          return a.scheduledDateInSeconds - b.scheduledDateInSeconds
+        })
+      sorted()
+      localStorage.setItem('allOrders',JSON.stringify(this.response))
+      return { sorted }
     },
+    filterResponse(){ //TODO: hacer filtro de pedidos
+      if(this.searchedOrder!==''){
+        // this.filteredArray = this.filteredArray.filter(a => 
+        //   a.customer.customerName.toLowerCase()===this.searchedOrder.toLowerCase()
+        // )
+      }
+      console.log('desde user',this.searchedOrder)
+    }
   },
   computed: {
     convertDate() {
       const hola = "hola";
       this.response.map((a) => {
         if (a.scheduledDate) {
-          const splitedDate = a.scheduledDate.split("T");
-          const day = splitedDate[0].split("-");
-          const hour = splitedDate[1].split(":");
+          const splitedDate = a.scheduledDate.split("T")
+          const day = splitedDate[0].split("-")
+          const hour = splitedDate[1].split(":")
           const getTime = () => {
             //obtener la hora en segundos (seguramente se pueda hacer mejor)
             a.scheduledDateInSeconds =
@@ -89,13 +110,13 @@ export default {
                 60 +
                 parseInt(hour[1])) *
                 60 +
-              parseInt(hour[2]);
+              parseInt(hour[2])
           };
-          getTime();
+          getTime()
         } else {
-          const splitedDate = a.requestedDate.split("T");
-          const day = splitedDate[0].split("-");
-          const hour = splitedDate[1].split(":");
+          const splitedDate = a.requestedDate.split("T")
+          const day = splitedDate[0].split("-")
+          const hour = splitedDate[1].split(":")
           const getTime = () => {
             a.scheduledDateInSeconds =
               ((((parseInt(day[0]) - 1970) * 365.25 + parseInt(day[1])) * 30 +
@@ -104,16 +125,20 @@ export default {
                 60 +
                 parseInt(hour[1])) *
                 60 +
-              parseInt(hour[2]);
+              parseInt(hour[2])
           };
           getTime();
         }
       });
-      this.sortResponse();
-      return { hola };
+      this.sortResponse()
+      return { hola }
     },
   },
-};
+})
+// };
+
+export default class UsersOrders extends Vue {}
+
 </script>
 
 <style scoped>
