@@ -10,10 +10,14 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Orders <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Orders <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Historial</a>
+        <nav>
+          <router-link class="nav-link" to="/historial">Historial</router-link>
+        </nav>
+        <router-view/>
+        <!-- <a class="nav-link" href="#">Historial</a> -->
       </li>
       <li class="nav-item">
         <a class="nav-link disabled">About PizzaJeff</a>
@@ -28,10 +32,14 @@
   <div v-if="visible" class="navbar-collapse d-flex justify-content-start px-5 pb-3 pt-2 mb-4 bg-black" style="width: fit-content; border-bottom-right-radius: 5px;" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Orders <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Orders <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Historial</a>
+        <nav>
+          <router-link class="nav-link" to="/historial">Historial</router-link>
+        </nav>
+        <router-view/>
+        <!-- <a class="nav-link" href="#">Historial</a> -->
       </li>
       <li class="nav-item">
         <a class="nav-link disabled">About PizzaJeff</a>

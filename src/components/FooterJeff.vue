@@ -1,7 +1,11 @@
 <template>
   <div class="footer__container bg-black">
-      <img class="logo__footer" src="./../assets/github.png" alt="">
-      <img class="logo__footer" src="./../assets/linkedin.png" alt="">
+      <a href="https://github.com/jkoki91" target="_blank">
+          <img class="logo__footer" src="./../assets/github.png" alt="">
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-lleonart-6288aba8/" target="_blank">
+          <img class="logo__footer" src="./../assets/linkedin.png" alt="">
+      </a>
   </div>
 </template>
 
